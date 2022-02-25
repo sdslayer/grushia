@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Grushia</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Cadrega County, Northern Grushia">
+      <link rel="stylesheet" href="../grush.css">
+   </head>
+   <body>
+   
+   <script>
+let repository = "repos/sdslayer100/grushia"
+let targetFile = "counties/cadrega.html"
+fetch(`https://api.github.com/${repository}/commits?path=${targetFile}`) // fetch this URL
+.then(x => x.json()) // convert to JSON
+.then(commits => { // "commits" is a list of all the commits + details
+    let mostRecentCommit = commits[0] // get the first commit in the list
+    let commitDate = mostRecentCommit.commit.author.date // get the date (inside commit.author.date) 
+    let dateObj = new Date(commitDate) // convert to a JS date which can be styled in any way you want
+
+    // dateObj has a bunch of functions for styling however you want
+    // full list - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#instance_methods
+    console.log("Raw Date: " + dateObj)
+    console.log("Long Date: " + dateObj.toDateString())
+    console.log("Short Date: " + dateObj.toLocaleDateString('en-US'))
+    console.log("Unix Timestamp: " + dateObj.getTime())
+	var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+	options.timeZone = 'PST';
+	options.timeZoneName = 'short';
+	document.getElementById("demo").innerHTML = dateObj.toLocaleString("en-US", options);
+})
+</script>
+
+      <h1 class="white">Cadrega County, Northern Grushia</h1>
+      <p><b>Cadrega County</b> is a county located in the Grushian region of Northern Grushia and is the most populous county in Grushia. In the 2020 Grushian Census, it had a population of 16,201,898. It's largest city is <a href="../cities/cadregacity.html">Cadrega City</a>, the nation's capital.</p>
+	  
+      <h2 class="test2">Maps</h2>
+	  <br class="test2">
+	  <img src="highlighted/cadrega.png" class="map2"></img>
+	  <h4 class="test">Location within Grushia</h4>
+	  
+	  <br>
+	  
+	  <img src="regionhighlighted/cadrega.png" class="map2"></img>
+	  <h4 class="test">Location within the region of Northern Grushia</h4>
+	  
+	  <br>
+	  
+	  <img src="regionmaps/cadrega.png" class="map2"></img>
+	  <h4 class="test">Detailed map of Cadrega County</h4>
+	  
+      <br><br>
+	  
+	  <h2 class="test2">History</h2>
+	  <h4><b>Cadrega County</b> was the first county created upon Grushia's founding in 1737 alongside Guy County. Previously, Cadrega County encompassed all of mainland Grushia, while Guy County comprised of all islands and disconnected regions, such as all of Grukraine, Sal Island, and Ulmalkia to name a few. In the late 1700s, as more counties were formed, Cadrega County shrunk in size. The creation of Found County in 1790 split the Grushian mainland in half, with Found containing the southern half, and Cadrega containing the northern half. Over the next century, various counties would chisle away at Cadrega County's size, until it was shrunk to it's current state in 2012 when Arc County was formed out of Border and Cadrega Counties.</h4>
+	  
+      <h2 class="test2">Geography</h2>
+	  <h3 class="white">Climate and weather</h3>
+	  <h4>Cadrega County and surrounding counties have recently been experiencing a warm trend in weather due to the ongoing La Niña patterns in the Pacific Ocean. Average temperatures (2016-2021) have ranged from a low of 59°F to a high of 83°F in January, as well as a low of 39°F to a high of 58°F in July.</h4>
+	  <h4>Due to it's inner location compared to the rest of Grushia, it is only occasionally directly impacted by tropical cyclones during the Grushian hurricane season, however Cadrega County does often receive effects of remnants or weakened cyclones that have made landfall elsewhere.</h4>
+	  <h3 class="white">Adjacent counties</h3>
+	  <h4><a href="border.html">Border County - north</a></h4>
+	  <h4><a href="arc.html">Arc County - northeast</a></h4>
+	  <h4><a href="red.html">Red County - northwest</a></h4>
+	  <h4><a href="lix.html">Lix County - west</a></h4>
+	  
+	  <br>
+	  
+	  <h3><a href="../index.html">[BACK]</a></h3>
+   </body>
+   
+   <footer style="text-align:center;"><span style="color:#ffffff;">Last updated: </span>
+	<span id='demo' style="color:#ffffff;"></span></footer>
+	
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Grushia</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="You County, Southern Grushia">
+      <link rel="stylesheet" href="../grush.css">
+   </head>
+   <body>
+   
+   <script>
+let repository = "repos/sdslayer100/grushia"
+let targetFile = "counties/you.html"
+fetch(`https://api.github.com/${repository}/commits?path=${targetFile}`) // fetch this URL
+.then(x => x.json()) // convert to JSON
+.then(commits => { // "commits" is a list of all the commits + details
+    let mostRecentCommit = commits[0] // get the first commit in the list
+    let commitDate = mostRecentCommit.commit.author.date // get the date (inside commit.author.date) 
+    let dateObj = new Date(commitDate) // convert to a JS date which can be styled in any way you want
+
+    // dateObj has a bunch of functions for styling however you want
+    // full list - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#instance_methods
+    console.log("Raw Date: " + dateObj)
+    console.log("Long Date: " + dateObj.toDateString())
+    console.log("Short Date: " + dateObj.toLocaleDateString('en-US'))
+    console.log("Unix Timestamp: " + dateObj.getTime())
+	var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+	options.timeZone = 'PST';
+	options.timeZoneName = 'short';
+	document.getElementById("demo").innerHTML = dateObj.toLocaleString("en-US", options);
+})
+</script>
+   
+   
+      <h1 class="white">You County, Southern Grushia</h1>
+      <p><b>You County</b> is a county located in the Grushian region of Southern Grushia and is the smallest county in Grushia by area. In the 2020 Grushian Census, it had a population of 96,771. It's largest city is <a href="../cities/twentyone.html">Twenty-One</a>.</p>
+	  
+      <h2 class="test2">Maps</h2>
+	  <br class="test2">
+	  <img src="highlighted/you.png" class="map2"></img>
+	  <h4 class="test">Location within Grushia</h4>
+	  
+	  <br>
+	  
+	  <img src="regionhighlighted/you.png" class="map2"></img>
+	  <h4 class="test">Location within the region of Southern Grushia</h4>
+	  
+	  <br>
+	  
+	  <img src="regionmaps/you.png" class="map2"></img>
+	  <h4 class="test">Detailed map of You County</h4>
+	  
+      <br><br>
+	  
+      <h2 class="test2">History</h2>
+	  <h4><b>You County</b> was formed in 1991 out of Ocean County. This change came after Ocean County Sheriff, Tails McGails, met with the Grushian President at the time, James R. Atio, in September 1990 and proposed that Ocean County voluntarily secede some territory in the shape of a 'U' to form a new county. When the President asked him why he chose that shape, McGails replied simply with "because I think it's funny." Upon a unanimous refernendum with the Ocean County Board of Supervisors, the territory was split of and officially declared a new county on June 16, 1991. During this change, district 4 of Ocean County, was transferred over to become the sole district of the You County Board. This was shortlived as the district was split up into 3 smaller districts by the President in March 1992.</h4>
+	  
+      <h2 class="test2">Geography</h2>
+	  <h3 class="white">Climate and weather</h3>
+	  <h4>You County tends to mirror surrounding counties' weather, although, due to its lower elevation, it can have above-average summer temperatures. Average temperatures (2016-2021) have ranged from a low of 51°F to a high of 88°F in January, as well as a low of 25°F to a high of 49°F in July.</h4>
+	  <h4>Due to it's inland location in Grushia, it is only ever affected by weakened cyclones or their remnants. Stronger cyclones could theoretically make it to You County still as a major hurricane if their path was perfect, but this is unlikely.</h4>
+	  <h3 class="white">Adjacent counties</h3>
+	  <h4><a href="paige.html">Paige County - north</a></h4>
+	  <h4><a href="ocean.html">Ocean County - north/south/west</a></h4>
+	  <h4><a href="riley.html">Riley County - east</a></h4>
+	  
+	  <br>
+	  
+	  <h3><a href="../index.html">[BACK]</a></h3>
+   </body>
+   
+   <footer style="text-align:center;"><span style="color:#ffffff;">Last updated: </span>
+	<span id='demo' style="color:#ffffff;"></span></footer>
+	
+</html>
