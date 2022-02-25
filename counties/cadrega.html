@@ -6,6 +6,30 @@
       <meta name="description" content="Cadrega County, Northern Grushia">
       <link rel="stylesheet" href="../grush.css">
    </head>
+   
+   <script>
+let repository = "repos/sdslayer100/grushia"
+let targetFile = "index.html"
+fetch(`https://api.github.com/${repository}/commits?path=${targetFile}`) // fetch this URL
+.then(x => x.json()) // convert to JSON
+.then(commits => { // "commits" is a list of all the commits + details
+    let mostRecentCommit = commits[0] // get the first commit in the list
+    let commitDate = mostRecentCommit.commit.author.date // get the date (inside commit.author.date) 
+    let dateObj = new Date(commitDate) // convert to a JS date which can be styled in any way you want
+
+    // dateObj has a bunch of functions for styling however you want
+    // full list - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#instance_methods
+    console.log("Raw Date: " + dateObj)
+    console.log("Long Date: " + dateObj.toDateString())
+    console.log("Short Date: " + dateObj.toLocaleDateString('en-US'))
+    console.log("Unix Timestamp: " + dateObj.getTime())
+	var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+	options.timeZone = 'PST';
+	options.timeZoneName = 'short';
+	document.getElementById("demo").innerHTML = dateObj.toLocaleString("en-US", options);
+})
+</script>
+   
    <body>
       <h1 class="white">Cadrega County, Northern Grushia</h1>
       <p><b>Cadrega County</b> is a county located in the Grushian region of Northern Grushia and is the most populous county in Grushia. In the 2020 Grushian Census, it had a population of 16,201,898. It's largest city is <a href="../cities/cadregacity.html">Cadrega City</a>, the nation's capital.</p>
@@ -40,4 +64,8 @@
 	  
 	  <h3><a href="../index.html">[BACK]</a></h3>
    </body>
+   
+   <footer style="text-align:center;"><span style="color:#ffffff;">Last updated: </span>
+	<span id='demo' style="color:#ffffff;"></span></footer>
+	
 </html>
